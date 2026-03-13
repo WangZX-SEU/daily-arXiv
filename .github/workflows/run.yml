@@ -158,17 +158,18 @@ jobs:
         export LANGUAGE="${{ vars.LANGUAGE }}"
         export GOOGLE_API_KEY="${{ secrets.GOOGLE_API_KEY }}"
         export NOTEBOOKLM_MODEL="${{ vars.NOTEBOOKLM_MODEL }}"
+        export NOTEBOOKLM_FALLBACK_MODELS="${{ vars.NOTEBOOKLM_FALLBACK_MODELS }}"
         AI_FILE="data/${today}_AI_enhanced_${LANGUAGE}.jsonl"
         RAW_FILE="data/${today}.jsonl"
 
         echo "生成关键词日报... / Generating keyword daily report..."
         if [ -f "$AI_FILE" ]; then
-          python report/generate_keyword_report.py --input "$AI_FILE" --date "$today" --output-dir report --generate-source-guide --source-guide-dir report/source_guides
+          python report/generate_keyword_report.py --input "$AI_FILE" --date "$today" --output-dir report --generate-source-guide --source-guide-dir report/author_source_guides --max-source-papers 30
         elif [ -f "$RAW_FILE" ]; then
-          python report/generate_keyword_report.py --input "$RAW_FILE" --date "$today" --output-dir report --generate-source-guide --source-guide-dir report/source_guides
+          python report/generate_keyword_report.py --input "$RAW_FILE" --date "$today" --output-dir report --generate-source-guide --source-guide-dir report/author_source_guides --max-source-papers 30
         else
           echo "未找到数据文件，生成占位日报... / No data file found, generating placeholder report..."
-          python report/generate_keyword_report.py --date "$today" --output-dir report --generate-source-guide --source-guide-dir report/source_guides
+          python report/generate_keyword_report.py --date "$today" --output-dir report --generate-source-guide --source-guide-dir report/author_source_guides --max-source-papers 30
         fi
         echo "关键词日报生成完成 / Keyword daily report generated"
         
