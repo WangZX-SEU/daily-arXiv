@@ -18,6 +18,9 @@ TOPIC_KEYWORDS: Dict[str, List[str]] = {
         "robot exploration",
         "active exploration",
         "frontier exploration",
+        "exploration",
+        "frontier",
+        "object navigation",
     ],
     "reinforcement learning": [
         "reinforcement learning",
@@ -38,6 +41,9 @@ TOPIC_KEYWORDS: Dict[str, List[str]] = {
         "vision language model",
         "vision-language models",
         "multimodal model",
+        "open-vocabulary",
+        "scene understanding",
+        "scene graph",
     ],
 }
 
@@ -48,6 +54,7 @@ TARGET_AUTHORS: Dict[str, List[str]] = {
     "Daniele Nardi": ["daniele nardi"],
     "Vincenzo Suriani": ["vincenzo suriani"],
     "Guillaume Sartoretti": ["guillaume sartoretti"],
+    "Francesco Argenziano": ["francesco argenziano"],
 }
 
 
